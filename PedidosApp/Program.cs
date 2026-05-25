@@ -7,6 +7,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//github actions comments test
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
