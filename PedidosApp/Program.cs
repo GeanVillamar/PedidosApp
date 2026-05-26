@@ -1,4 +1,25 @@
+using Microsoft.EntityFrameworkCore;
+using PedidosApp;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Db context
+
+var dbProvider = builder.Configuration.GetConnectionString("Provider");
+
+builder.Services.AddDbContext<DataContext>(options =>
+{
+
+    if (dbProvider == "SqlServer")
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionString"));
+    }
+    else if (dbProvider == "Sqlite")
+    {
+        options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectionString"));
+    }
+});
+
 
 // Add services to the container.
 
